@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reserva de Entradas — Raíces Tickets</title>
+  <link rel="icon" type="image/png" href="../../assets/images/favicon.png" />
+  <link rel="stylesheet" href="../../assets/css/estilos.css" />
+  <link rel="icon" type="image/png" href="../../files/img/favicon.png" />
+</head>
+<body>
+
+  <!-- ═══ NAVBAR ═══ -->
+  <nav class="navbar">
+    <a href="menu.html" class="navbar-marca">
+      <div class="navbar-logo-icono">
+        <svg width="22" height="22" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="18" cy="24" rx="8" ry="9" fill="white" fill-opacity="0.95"/>
+          <ellipse cx="18" cy="24" rx="4.5" ry="5" fill="#16a34a"/>
+          <rect x="16.5" y="6" width="3" height="13" rx="1.5" fill="white" fill-opacity="0.95"/>
+          <ellipse cx="18" cy="11" rx="5" ry="4" fill="white" fill-opacity="0.85"/>
+          <circle cx="18" cy="24" r="1.5" fill="white"/>
+        </svg>
+      </div>
+      <span class="navbar-nombre">RAÍCES</span>
+    </a>
+    <div class="navbar-links">
+      <a href="portero.html" id="btn-portero" style="display: none; color: #f59e0b; font-weight: bold; margin-left: 15px; text-decoration: none;">
+      🛡️ Panel Portero
+      </a>
+      <a href="menu.html" class="nav-link active">Grilla del Festival</a>
+      <a href="sectores.html" class="nav-link">Sectores y Precios</a>
+      <a href="mis-entradas.html" class="nav-link">Mis Entradas</a>
+    </div>
+  <div class="navbar-user-profile">
+    <div class="user-info">
+      <span class="user-name" id="nombreUsuarioNav">Usuario</span>
+      <span class="user-account" onclick="abrirModalCierreSesion()">Mi Cuenta</span>
+    </div>
+    <div class="user-avatar">M</div> </div>
+    </div>
+  </nav>
+
+  <!-- ═══ CONTENIDO PRINCIPAL DE RESERVA ═══ -->
+  <main class="reserva-main">
+    <div class="bg-orbes-calmos">
+  <div class="orbe orbe-1"></div>
+  <div class="orbe orbe-2"></div>
+  <div class="orbe orbe-3"></div>
+  <div class="orbe orbe-4"></div>
+
+  <svg class="hoja hoja-izq-1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,50 Q40,10 100,20 Q50,60 0,50 Z" fill="var(--verde-principal)" opacity="0.8"/>
+    <path d="M0,50 Q45,25 95,22" stroke="#ffffff" stroke-width="1.5" fill="none" opacity="0.6"/>
+  </svg>
+
+  <svg class="hoja hoja-izq-2" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,50 C30,0 70,10 100,50 C70,90 30,100 0,50 Z" fill="var(--verde-claro)" opacity="0.7"/>
+    <path d="M0,50 Q50,50 95,50 M25,50 L45,25 M45,50 L60,75 M65,50 L80,35" stroke="#ffffff" stroke-width="1.5" fill="none" opacity="0.5"/>
+  </svg>
+
+  <svg class="hoja hoja-izq-3" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,50 Q50,20 100,50 Q40,70 0,50 Z" fill="var(--verde-oscuro)" opacity="0.6"/>
+    <path d="M0,50 Q50,35 95,50" stroke="#ffffff" stroke-width="1" fill="none" opacity="0.5"/>
+  </svg>
+
+  <svg class="hoja hoja-der-1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <path d="M100,50 Q60,10 0,20 Q50,60 100,50 Z" fill="var(--verde-principal)" opacity="0.8"/>
+    <path d="M100,50 Q55,25 5,22" stroke="#ffffff" stroke-width="1.5" fill="none" opacity="0.6"/>
+  </svg>
+
+  <svg class="hoja hoja-der-2" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <path d="M100,50 C70,0 30,10 0,50 C30,90 70,100 100,50 Z" fill="var(--verde-claro)" opacity="0.7"/>
+    <path d="M100,50 Q50,50 5,50 M75,50 L55,25 M55,50 L40,75 M35,50 L20,35" stroke="#ffffff" stroke-width="1.5" fill="none" opacity="0.5"/>
+  </svg>
+
+  <svg class="hoja hoja-der-3" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <path d="M100,50 Q50,20 0,50 Q60,70 100,50 Z" fill="var(--verde-oscuro)" opacity="0.6"/>
+    <path d="M100,50 Q50,35 5,50" stroke="#ffffff" stroke-width="1" fill="none" opacity="0.5"/>
+  </svg>
+
+
+
+  <svg class="hoja hoja-izq-11" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <path d="M10,90 C30,50 60,30 90,10 C65,45 45,65 10,90 Z" fill="var(--verde-principal)" />
+  </svg>
+  
+  <svg class="hoja hoja-izq-22" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <path d="M10,90 Q40,40 90,10 Q30,60 10,90 Z" fill="var(--verde-claro)" />
+  </svg>
+
+
+
+  <svg class="hoja hoja-izq-44" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <path d="M10,90 C30,50 60,30 90,10 C65,45 45,65 10,90 Z" fill="var(--verde-principal)" />
+  </svg>
+
+  <svg class="hoja hoja-der-11" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <path d="M90,90 C70,50 40,30 10,10 C35,45 55,65 90,90 Z" fill="var(--verde-principal)" />
+  </svg>
+  
+  <svg class="hoja hoja-der-22" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <path d="M90,90 Q60,40 10,10 Q70,60 90,90 Z" fill="var(--verde-claro)" />
+  </svg>
+
+
+
+  <svg class="hoja hoja-der-44" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <path d="M90,90 C70,50 40,30 10,10 C35,45 55,65 90,90 Z" fill="var(--verde-claro)" />
+    <path d="M90,90 Q50,50 10,10" stroke="rgba(255,255,255,0.5)" stroke-width="2" fill="none" />
+  </svg>
+</div>
+    <!-- PASO 1: SELECCIÓN DE SECTOR Y BUTACAS -->
+    <div id="paso-1-seleccion">
+      <button class="btn-volver-link" onclick="window.location.href='menu.html'">
+        &lt; Volver a Grilla
+      </button>
+
+      <div class="reserva-layout-grid">
+        
+        <!-- Columna Izquierda: Configurador -->
+        <div class="reserva-col-izq">
+          <!-- Cabecera de la Noche -->
+          <div class="reserva-header-card">
+            <div class="reserva-info-noche">
+              <h1>Noche 1: Gran Apertura</h1>
+              <p>🗓 Viernes 20 de Noviembre &nbsp;&nbsp; 📍 Estadio Municipal</p>
+            </div>
+            <div class="reserva-tarifa-base">
+              <span>TARIFA BASE GENERAL</span>
+              <strong id="tarifa-base-monto">$ 12.000</strong>
+            </div>
+          </div>
+
+          <!-- Selector de Categoría -->
+          <div class="reserva-seccion-bloque">
+            <h2>1. Elegí tu Categoría</h2>
+            <div class="sectores-cards-container" id="categoria-container">
+              <div class="sector-card active" data-categoria="mayores" onclick="seleccionarCategoria('mayores', this)">
+                <span>Mayores</span>
+              </div>
+              <div class="sector-card" data-categoria="menores" onclick="seleccionarCategoria('menores', this)">
+                <span>Menores (hasta 12 años) · -30%</span>
+              </div>
+              <div class="sector-card" data-categoria="jubilados" onclick="seleccionarCategoria('jubilados', this)">
+                <span>Jubilados · -30%</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Selector de Sectores -->
+          <div class="reserva-seccion-bloque">
+            <h2>2. Elegí tu Sector</h2>
+            <div class="sectores-cards-container" id="sector-container">
+              <div class="sector-card" onclick="seleccionarSector('A')">
+                <div class="sector-badge badge-a">A</div>
+                <span>Sector A (Platea VIP)</span>
+              </div>
+              <div class="sector-card" onclick="seleccionarSector('B')">
+                <div class="sector-badge badge-b">B</div>
+                <span>Sector B (Platea Media)</span>
+              </div>
+              <div class="sector-card" onclick="seleccionarSector('C')">
+                <div class="sector-badge badge-c">C</div>
+                <span>Sector C (General)</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mapa de Butacas (Oculto hasta elegir sector) -->
+          <div class="reserva-seccion-bloque" id="bloque-mapa" style="display: none;">
+            <h2>3. Seleccioná tus Butacas</h2>
+            <p class="subtitulo-bloque">Sector A - Fila 1 a 4. Límite: 4 butacas.</p>
+            
+            <div class="mapa-butacas-container">
+              <div class="escenario-bar">ESCENARIO</div>
+              <div class="grilla-butacas" id="grilla-butacas">
+                <!-- Se inyecta por JS -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Columna Derecha: Resumen (Sticky) -->
+        <div class="reserva-col-der">
+          <div class="resumen-card">
+            <h3>Resumen</h3>
+            
+            <!-- Estado Vacío -->
+            <div id="resumen-vacio" class="resumen-vacio">
+              <div class="icono-ticket-vacio">🎫</div>
+              <p>Aún no seleccionaste ninguna butaca.</p>
+            </div>
+
+            <!-- Estado con Selección -->
+            <div id="resumen-lleno" class="resumen-lleno" style="display: none;">
+              <ul class="lista-butacas-seleccionadas" id="lista-resumen">
+                <!-- Items inyectados por JS -->
+              </ul>
+              
+              <div class="resumen-totales">
+                <div class="linea-total-secundaria">
+                  <span id="txt-subtotal">Subtotal (0 entradas)</span>
+                  <span id="monto-subtotal">$ 0</span>
+                </div>
+                <div class="linea-total-descuento" id="fila-descuento-anticipada">
+                  <span>Descuento Anticipada (10%)</span>
+                  <span id="monto-descuento">- $ 0</span>
+                </div>
+                <div class="linea-total-descuento" id="fila-descuento-categoria" style="display:none;">
+                  <span id="txt-descuento-categoria">Descuento Categoría (30%)</span>
+                  <span id="monto-descuento-categoria">- $ 0</span>
+                </div>
+                <div class="linea-total-final">
+                  <span>Total a Pagar</span>
+                  <strong id="monto-total">$ 0</strong>
+                </div>
+              </div>
+
+              <button class="btn-continuar-reserva" onclick="irAPaso2()">Continuar Reserva &rarr;</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PASO 2: CHECKOUT / CONFIRMACIÓN -->
+    <div id="paso-2-checkout" style="display: none;">
+      <button class="btn-volver-link" onclick="volverAPaso1()">
+        &lt; Volver a Selección
+      </button>
+
+      <div class="checkout-card-central">
+        <div class="checkout-header-dark">
+          <h2>🎟 Reserva de Entradas</h2>
+          <p>Generá tu comprobante para abonar en efectivo.</p>
+        </div>
+
+        <div class="checkout-body">
+          <div class="alerta-pago-efectivo">
+            <strong>Importante: Pago en Efectivo</strong>
+            <p>Según las bases del festival, la forma de venta es <strong>únicamente de contado en efectivo</strong>. Al confirmar, emitiremos tu entrada/factura en menos de 6 segundos. Deberás presentarla en boletería.</p>
+          </div>
+
+          <div class="checkout-datos-grid">
+            <h3 class="checkout-seccion-titulo">Titular de la Compra</h3>
+            <div class="datos-fila">
+              <div>
+                <label>Nombre</label>
+                <strong id="checkout-nombre">Cargando...</strong>
+              </div>
+              <div>
+                <label>DNI</label>
+                <strong id="checkout-dni">Cargando...</strong>
+              </div>
+            </div>
+
+            <h3 class="checkout-seccion-titulo mt-4">Detalle</h3>
+            <div class="datos-fila-detalle">
+              <span>Festival</span>
+              <strong id="checkout-titulo-noche">Noche 1: Gran Apertura</strong>
+            </div>
+            <div class="datos-fila-detalle">
+              <span>Butacas asignadas</span>
+              <strong id="checkout-butacas">A-F2-B5, A-F2-B4...</strong>
+            </div>
+            <div class="datos-fila-detalle">
+              <span>Categoría y Sector</span>
+              <strong id="checkout-sector">Mayores - Sector A (Platea VIP)</strong>
+            </div>
+          </div>
+
+          <div class="checkout-total-bar">
+            <span>Total a Efectivizar</span>
+            <strong id="checkout-monto-total">$ 64.800</strong>
+          </div>
+
+          <button class="btn-confirmar-emitir" onclick="irAPaso3()">
+            ✓ Confirmar y Emitir Ticket
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- PASO 3: TICKET DE ÉXITO -->
+    <div id="paso-3-exito" style="display: none;">
+      <div class="exito-header-central">
+        <div class="circulo-check">✓</div>
+        <h1>¡Entrada Emitida con Éxito!</h1>
+        <p>Operación generada en 1.2s. Encontrala siempre en "Mis Entradas".</p>
+      </div>
+
+      <div class="ticket-final-card">
+        <div class="ticket-top-dark">
+          <div class="ticket-marca">🌲 RAÍCES TICKETS</div>
+          <div class="ticket-noche-info">
+            <h2 id="ticket-titulo-noche">Noche 1: Gran Apertura</h2>
+            <p id="ticket-fecha-noche">Viernes 20 de Noviembre - 20:00 hs</p>
+          </div>
+          <div class="ticket-factura-info">
+            <span>Ticket B</span>
+            <strong>TIK-515253</strong>
+          </div>
+        </div>
+        
+        <div class="ticket-body-white">
+          <div class="ticket-grid-info">
+            <div class="t-dato">
+              <label>LUGAR</label>
+              <strong>Único Estadio Municipal</strong>
+            </div>
+            <div class="t-dato">
+              <label>CLIENTE / DNI</label>
+              <strong id="ticket-cliente">Cargando...</strong>
+            </div>
+            <div class="t-dato">
+              <label>SECTOR</label>
+              <strong id="ticket-sector">Sector A (Platea VIP)</strong>
+            </div>
+            <div class="t-dato">
+              <label>BUTACAS ASIGNADAS</label>
+              <strong id="ticket-butacas">A-F2-B5, A-F2-B4...</strong>
+            </div>
+          </div>
+
+          <div class="ticket-total-box">
+            <div>
+              <label>TOTAL ABONADO (CONTADO)</label>
+              <strong id="ticket-monto-total" class="text-verde">$ 64.800</strong>
+            </div>
+            <div class="ticket-fecha-hora">
+              <span>IVA Incluido</span>
+              <span>17/6/2026 14:13:45</span>
+            </div>
+          </div>
+          
+          <div class="ticket-cut-line"></div>
+          
+          <div class="ticket-barcode-area">
+            <img id="ticket-qr" src="" alt="Código QR de Entrada" style="width: 130px; height: 130px; margin: 0 auto; display: none; border-radius: 8px;">
+            
+            <span class="barcode-numbers" id="ticket-codigo-texto" style="display: block; margin-top: 10px; font-weight: bold; letter-spacing: 2px;">Generando código...</span>
+            
+            <p>La entrada es personal y no transferible. El ingreso requiere presentar DNI.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="exito-acciones">
+        <button class="btn-outline" onclick="window.location.href='menu.html'">Volver a la Grilla</button>
+        <button class="btn-dark" onclick="window.location.href='mis-entradas.html'">🎫 Ir a Mis Entradas</button>
+      </div>
+    </div>
+
+  </main>
+  <!-- ═══ MODAL CIERRE DE SESIÓN ═══ -->
+  <div class="modal-overlay" id="modalCierreSesion" style="display: none;">
+    <div class="modal-caja">
+      <div class="modal-icono">👋</div>
+      <h2 class="modal-titulo">¿Cerrar sesión?</h2>
+      <p class="modal-desc">Vas a salir del sistema. Podrás volver a ingresar en cualquier momento.</p>
+      <div class="modal-botones">
+        <button class="btn-modal-cancelar" onclick="cerrarModal()">Cancelar</button>
+        <button class="btn-modal-confirmar" onclick="confirmarCierreSesion()">Salir</button>
+      </div>
+    </div>
+  </div>
+  <script src="../../assets/javascript/reserva.js?v=1.11"></script>
+  <script src="../../assets/javascript/menu.js?v=1.3"></script>
+  <script src="../../assets/javascript/autenticacion.js?v=1.1"></script>
+</body>
+</html>

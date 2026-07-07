@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sectores y Precios — Raíces Tickets</title>
+  <link rel="stylesheet" href="../../assets/css/estilos.css" />
+  <link rel="icon" type="image/png" href="../../files/img/favicon.png" />
+</head>
+
+<body>
+
+  <!-- ═══ NAVBAR ACTUALIZADA CON ENLACES OPERATIVOS ═══ -->
+  <nav class="navbar">
+    <a href="menu.html" class="navbar-marca">
+      <div class="navbar-logo-icono">
+        <svg width="22" height="22" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="18" cy="24" rx="8" ry="9" fill="white" fill-opacity="0.95"/>
+          <ellipse cx="18" cy="24" rx="4.5" ry="5" fill="#16a34a"/>
+          <rect x="16.5" y="6" width="3" height="13" rx="1.5" fill="white" fill-opacity="0.95"/>
+          <ellipse cx="18" cy="11" rx="5" ry="4" fill="white" fill-opacity="0.85"/>
+          <circle cx="18" cy="24" r="1.5" fill="white"/>
+        </svg>
+      </div>
+      <span class="navbar-nombre">RAÍCES</span>
+    </a>
+
+    <div class="navbar-links">
+      <a href="portero.html" id="btn-portero" style="display: none; color: #f59e0b; font-weight: bold; margin-left: 15px; text-decoration: none;">
+      🛡️ Panel Portero
+      </a>
+        <a href="admin.html" id="btn-admin" style="display: none; color: #3b82f6; font-weight: bold; margin-left: 15px; text-decoration: none;">
+     ⚙️ Panel Admin
+      </a>
+      <a href="menu.html" class="nav-link">Grilla del Festival</a>
+      <a href="sectores.html" class="nav-link active">Sectores y Precios</a>
+      <a href="mis-entradas.html" class="nav-link">Mis Entradas</a>
+    </div>
+
+    <div class="navbar-user-profile">
+      <div class="user-info">
+        <span class="user-name" id="nombreUsuarioNav">Usuario</span>
+        <span class="user-account" onclick="abrirModalCierreSesion()">Mi Cuenta</span>
+      </div>
+      <div class="user-avatar">M</div> 
+    </div>
+  </nav>
+
+  <!-- ═══ CONTENIDO PRINCIPAL DE SECTORES Y PRECIOS ═══ -->
+  <main class="menu-main">
+  <div class="bg-orbes-calmos">
+  <div class="orbe orbe-1"></div>
+  <div class="orbe orbe-2"></div>
+  <div class="orbe orbe-3"></div>
+  <div class="orbe orbe-4"></div>
+
+  <svg class="hoja hoja-izq-1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,50 Q40,10 100,20 Q50,60 0,50 Z" fill="var(--verde-principal)" opacity="0.8"/>
+    <path d="M0,50 Q45,25 95,22" stroke="#ffffff" stroke-width="1.5" fill="none" opacity="0.6"/>
+  </svg>
+
+  <svg class="hoja hoja-izq-2" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,50 C30,0 70,10 100,50 C70,90 30,100 0,50 Z" fill="var(--verde-claro)" opacity="0.7"/>
+    <path d="M0,50 Q50,50 95,50 M25,50 L45,25 M45,50 L60,75 M65,50 L80,35" stroke="#ffffff" stroke-width="1.5" fill="none" opacity="0.5"/>
+  </svg>
+
+  <svg class="hoja hoja-izq-3" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,50 Q50,20 100,50 Q40,70 0,50 Z" fill="var(--verde-oscuro)" opacity="0.6"/>
+    <path d="M0,50 Q50,35 95,50" stroke="#ffffff" stroke-width="1" fill="none" opacity="0.5"/>
+  </svg>
+
+  <svg class="hoja hoja-der-1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <path d="M100,50 Q60,10 0,20 Q50,60 100,50 Z" fill="var(--verde-principal)" opacity="0.8"/>
+    <path d="M100,50 Q55,25 5,22" stroke="#ffffff" stroke-width="1.5" fill="none" opacity="0.6"/>
+  </svg>
+
+  <svg class="hoja hoja-der-2" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <path d="M100,50 C70,0 30,10 0,50 C30,90 70,100 100,50 Z" fill="var(--verde-claro)" opacity="0.7"/>
+    <path d="M100,50 Q50,50 5,50 M75,50 L55,25 M55,50 L40,75 M35,50 L20,35" stroke="#ffffff" stroke-width="1.5" fill="none" opacity="0.5"/>
+  </svg>
+
+  <svg class="hoja hoja-der-3" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <path d="M100,50 Q50,20 0,50 Q60,70 100,50 Z" fill="var(--verde-oscuro)" opacity="0.6"/>
+    <path d="M100,50 Q50,35 5,50" stroke="#ffffff" stroke-width="1" fill="none" opacity="0.5"/>
+  </svg>
+
+
+
+  <svg class="hoja hoja-izq-11" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <path d="M10,90 C30,50 60,30 90,10 C65,45 45,65 10,90 Z" fill="var(--verde-principal)" />
+  </svg>
+  
+  <svg class="hoja hoja-izq-22" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <path d="M10,90 Q40,40 90,10 Q30,60 10,90 Z" fill="var(--verde-claro)" />
+  </svg>
+
+
+
+  <svg class="hoja hoja-izq-44" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <path d="M10,90 C30,50 60,30 90,10 C65,45 45,65 10,90 Z" fill="var(--verde-principal)" />
+  </svg>
+
+  <svg class="hoja hoja-der-11" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <path d="M90,90 C70,50 40,30 10,10 C35,45 55,65 90,90 Z" fill="var(--verde-principal)" />
+  </svg>
+  
+  <svg class="hoja hoja-der-22" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <path d="M90,90 Q60,40 10,10 Q70,60 90,90 Z" fill="var(--verde-claro)" />
+  </svg>
+
+
+
+  <svg class="hoja hoja-der-44" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <path d="M90,90 C70,50 40,30 10,10 C35,45 55,65 90,90 Z" fill="var(--verde-claro)" />
+    <path d="M90,90 Q50,50 10,10" stroke="rgba(255,255,255,0.5)" stroke-width="2" fill="none" />
+  </svg>
+</div>
+    <section class="sectores-precios-section">
+      
+      <header class="seccion-header">
+        <h1 class="seccion-principal-titulo">Sectores y Precios</h1>
+        <p class="seccion-subtitulo">El estadio se divide en sectores con diferentes multiplicadores de tarifa base.</p>
+      </header>
+
+      <!-- Contenedor del Mapa Visual del Estadio -->
+      <div class="estadio-card-mapa">
+        <div class="estadio-visual">
+          <div class="bloque-escenario">ESCENARIO</div>
+          <div class="bloque-sector sector-a">SECTOR A (VIP)</div>
+          <div class="bloque-sector sector-b">SECTOR B (Media)</div>
+          <div class="bloque-sector sector-c">SECTOR C (General)</div>
+        </div>
+      </div>
+
+      <!-- Contenedor de la Tabla de Tarifas -->
+      <div class="tabla-precios-wrapper">
+        <h2 class="tabla-titulo">Tabla de Precios Referenciales (Mayores)</h2>
+        
+        <div class="tabla-responsive-container">
+          <table class="tabla-precios">
+            <thead>
+              <tr>
+                <th>Noche del Festival</th>
+                <th>Sector C (Base)</th>
+                <th>Sector B (+20%)</th>
+                <th>Sector A (+50%)</th>
+              </tr>
+            </thead>
+            <tbody id="tabla-precios-body">
+              <tr><td colspan="4" style="text-align:center; color:#71717a; padding: 20px;">Cargando precios...</td></tr>
+            </tbody>
+          </table>
+        </div>
+        
+        <p class="tabla-nota-pie">
+          * Menores (hasta 12 años) y Jubilados cuentan con un 30% de descuento sobre el precio final al seleccionar su categoría en la compra.
+        </p>
+      </div>
+
+    </section>
+  </main>
+
+  <!-- ═══ MODAL CIERRE DE SESIÓN (Mantenido por consistencia con la Navbar) ═══ -->
+  <div class="modal-overlay" id="modalCierreSesion" style="display: none;" >
+    <div class="modal-caja">
+      <div class="modal-icono">👋</div>
+      <h2 class="modal-titulo">¿Cerrar sesión?</h2>
+      <p class="modal-desc">Vas a salir del sistema. Podrás volver a ingresar en cualquier momento.</p>
+      <div class="modal-botones">
+        <button class="btn-modal-cancelar" onclick="cerrarModal()">Cancelar</button>
+        <button class="btn-modal-confirmar" onclick="confirmarCierreSesion()">Salir</button>
+      </div>
+    </div>
+  </div>
+  <footer class="pie-pagina">
+    <div class="footer-contenido">
+      <p>&copy; 2026 Sistema Raíces Tickets. Todos los derechos reservados.</p>
+      <div class="footer-enlaces">
+        <a href="terminos.html">Términos y Condiciones</a>
+        <a href="soporte.html">Soporte Técnico</a>
+      </div>
+      <p style="font-size: 0.8rem; margin-top: 5px; opacity: 0.6;">
+        Desarrollado para la gestión segura de eventos.
+      </p>
+    </div>
+  </footer>
+  <!-- Vinculación de tus scripts originales para mantener vivas las funciones de usuario -->
+  <script src="../../assets/javascript/menu.js?v=1.3"></script>
+  <script src="../../assets/javascript/autenticacion.js?v=1.1"></script>
+  <script>
+    (async function cargarTablaPrecios() {
+      const tbody = document.getElementById('tabla-precios-body');
+      try {
+        const resp = await fetch('../../controlador/ControladorNoches.php', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ accion: 'listar_noches' })
+        });
+        const datos = await resp.json();
+
+        if (!datos.exito || datos.noches.length === 0) {
+          tbody.innerHTML = '<tr><td colspan="4" style="text-align:center; color:#71717a; padding:20px;">No hay noches cargadas todavía.</td></tr>';
+          return;
+        }
+
+        tbody.innerHTML = datos.noches.map(noche => {
+          const base = Number(noche.precio_base);
+          const b = Math.round(base * 1.2);
+          const a = Math.round(base * 1.5);
+          const fmt = n => '$ ' + n.toLocaleString('es-AR');
+          return `<tr>
+            <td><strong>${noche.titulo}</strong></td>
+            <td class="col-sector-c">${fmt(base)}</td>
+            <td class="col-sector-b">${fmt(b)}</td>
+            <td class="col-sector-a">${fmt(a)}</td>
+          </tr>`;
+        }).join('');
+      } catch (e) {
+        tbody.innerHTML = '<tr><td colspan="4" style="text-align:center; color:#ef4444; padding:20px;">Error al cargar los precios.</td></tr>';
+      }
+    })();
+  </script>
+</body>
+</html>

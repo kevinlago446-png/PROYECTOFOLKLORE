@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Portero - Control de Ingreso</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #18181b; color: white; text-align: center; padding: 30px; }
+    .contenedor { max-width: 600px; margin: 0 auto; background: #27272a; padding: 30px; border-radius: 12px; }
+    input { width: 80%; padding: 15px; font-size: 20px; text-align: center; border-radius: 8px; border: 2px solid #52525b; outline: none; margin-bottom: 20px;}
+    input:focus { border-color: #3b82f6; }
+    
+    .ticket-info { display: none; background: #3f3f46; padding: 20px; border-radius: 8px; margin-top: 20px; }
+    .alerta { padding: 10px; border-radius: 8px; font-weight: bold; font-size: 1.2rem; margin-bottom: 15px; }
+    .alerta-roja { background: #7f1d1d; color: #fca5a5; }
+    
+    button { width: 100%; padding: 15px; font-size: 18px; font-weight: bold; border: none; border-radius: 8px; cursor: pointer; margin-top: 10px; transition: 0.2s; }
+    .btn-cobrar { background: #eab308; color: #422006; }
+    .btn-cobrar:hover { background: #facc15; }
+    .btn-ingresar { background: #10b981; color: #064e3b; }
+    .btn-ingresar:hover { background: #34d399; }
+  </style>
+  <link rel="icon" type="image/png" href="../../files/img/favicon.png" />
+</head>
+<body>
+
+  <div class="contenedor">
+    <h1 style="color: #3b82f6;">🎫 Terminal de Acceso</h1>
+    <p>Escanee el código QR del cliente</p>
+    <input type="text" id="inputCodigo" placeholder="Ej: RT-..." autocomplete="off" autofocus>
+    
+    <div id="alertaGlobal" class="alerta alerta-roja" style="display: none;"></div>
+
+    <div id="infoTicket" class="ticket-info">
+      <h2 id="lblNoche" style="margin-top:0;">Noche</h2>
+      <p style="font-size: 1.2rem; color: #a1a1aa;" id="lblAsientos">Sector / Butacas</p>
+      
+      <button id="btnCobrar" class="btn-cobrar" style="display: none;" onclick="accionPortero('cobrar')">
+        💰 COBRAR EN EFECTIVO (<span id="lblMonto"></span>)
+      </button>
+
+      <div id="msgPagado" class="alerta" style="display:none; background: #064e3b; color: #6ee7b7;">✅ ENTRADA ABONADA</div>
+      
+      <button id="btnIngresar" class="btn-ingresar" style="display: none;" onclick="accionPortero('ingresar')">
+        ✅ PERMITIR INGRESO
+      </button>
+
+      <div id="msgUsado" class="alerta alerta-roja" style="display:none;">⚠️ ESTA ENTRADA YA FUE USADA</div>
+    </div>
+  </div>
+  <script>
+(async () => {
+  try {
+    const req = await fetch('/PROYECTO%20FOLKLORE/controlador/ControladorAuth.php', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'include', // imprescindible: manda la cookie de sesión PHP
+      body: JSON.stringify({ accion: 'verificar_sesion' })
+    });
+    const res = await req.json();
+
+    // Si no hay sesión real en el servidor, o el rol no es portero/admin -> afuera
+    if (!res.exito || !['vendedor', 'admin'].includes(res.usuario.rol)) {
+      window.location.href = 'index.html';
+    }
+  } catch (e) {
+    // si falla la consulta al servidor, por seguridad también lo mandamos afuera
+    window.location.href = 'index.html';
+  }
+})();
+</script>
+  <script>
+    const inputCodigo = document.getElementById('inputCodigo');
+    let ticketActual = null; // Guardamos el ID del ticket en memoria
+
+    inputCodigo.addEventListener('keyup', async (e) => {
+      if (e.key === 'Enter') {
+        const codigo = inputCodigo.value.trim();
+        if (!codigo) return;
+        
+        inputCodigo.disabled = true;
+        document.getElementById('infoTicket').style.display = 'none';
+        document.getElementById('alertaGlobal').style.display = 'none';
+
+        const req = await fetch('/PROYECTO%20FOLKLORE/controlador/ControladorReserva.php', {
+          method: 'POST', headers: {'Content-Type':'application/json'},
+          body: JSON.stringify({ accion: 'portero_leer_ticket', codigo_ticket: codigo })
+        });
+        const res = await req.json();
+
+        if (!res.exito) {
+          document.getElementById('alertaGlobal').textContent = res.mensaje;
+          document.getElementById('alertaGlobal').style.display = 'block';
+        } else {
+          ticketActual = res.ticket.id;
+          document.getElementById('lblNoche').textContent = res.ticket.noche;
+          document.getElementById('lblAsientos').textContent = `${res.ticket.sector} - Butacas: ${res.ticket.butacas}`;
+          document.getElementById('lblMonto').textContent = res.ticket.total;
+          
+          // Mostrar/Ocultar botón de Cobrar
+          if(res.ticket.estado_pago === 'pendiente') {
+            document.getElementById('btnCobrar').style.display = 'block';
+            document.getElementById('msgPagado').style.display = 'none';
+          } else {
+            document.getElementById('btnCobrar').style.display = 'none';
+            document.getElementById('msgPagado').style.display = 'block';
+          }
+
+          // Mostrar/Ocultar botón de Ingreso
+          if(res.ticket.estado_ticket === 'valido') {
+            document.getElementById('btnIngresar').style.display = 'block';
+            document.getElementById('msgUsado').style.display = 'none';
+          } else {
+            document.getElementById('btnIngresar').style.display = 'none';
+            document.getElementById('msgUsado').style.display = 'block';
+          }
+
+          document.getElementById('infoTicket').style.display = 'block';
+        }
+        
+        inputCodigo.value = '';
+        inputCodigo.disabled = false;
+        inputCodigo.focus();
+      }
+    });
+
+    async function accionPortero(tipo) {
+      if(!ticketActual) return;
+      
+      const req = await fetch('/PROYECTO%20FOLKLORE/controlador/ControladorReserva.php', {
+        method: 'POST', headers: {'Content-Type':'application/json'},
+        body: JSON.stringify({ accion: 'portero_accion_ticket', ticket_id: ticketActual, tipo_accion: tipo })
+      });
+      const res = await req.json();
+      
+      if(res.exito) {
+        // Truco visual para no recargar la página entera: cambiamos los botones al instante
+        if (tipo === 'cobrar') {
+          document.getElementById('btnCobrar').style.display = 'none';
+          document.getElementById('msgPagado').style.display = 'block';
+        } else if (tipo === 'ingresar') {
+          document.getElementById('btnIngresar').style.display = 'none';
+          document.getElementById('msgUsado').style.display = 'block';
+          // Después de ingresar, ocultamos todo para escanear al siguiente
+          setTimeout(() => { document.getElementById('infoTicket').style.display = 'none'; }, 2000);
+        }
+      }
+      inputCodigo.focus();
+    }
+    
+    // Mantener siempre el foco en la caja para el Lector QR
+    document.addEventListener('click', () => inputCodigo.focus());
+  </script>
+  <script src="../../assets/javascript/autenticacion.js?v=1.2"></script>
+</body>
+</html>

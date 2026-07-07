@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Panel Admin — Raíces Tickets</title>
+  <link rel="stylesheet" href="../../assets/css/estilos.css" />
+  <link rel="icon" type="image/png" href="../../files/img/favicon.png" />
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="menu.html" class="navbar-marca">
+      <div class="navbar-logo-icono">
+        <svg width="22" height="22" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="18" cy="24" rx="8" ry="9" fill="white" fill-opacity="0.95"/>
+          <ellipse cx="18" cy="24" rx="4.5" ry="5" fill="#16a34a"/>
+          <rect x="16.5" y="6" width="3" height="13" rx="1.5" fill="white" fill-opacity="0.95"/>
+          <ellipse cx="18" cy="11" rx="5" ry="4" fill="white" fill-opacity="0.85"/>
+          <circle cx="18" cy="24" r="1.5" fill="white"/>
+        </svg>
+      </div>
+      <span class="navbar-nombre">RAÍCES</span>
+    </a>
+    <div class="navbar-links">
+      <a href="menu.html" class="nav-link">Grilla del Festival</a>
+      <a href="sectores.html" class="nav-link">Sectores y Precios</a>
+      <a href="mis-entradas.html" class="nav-link">Mis Entradas</a>
+    </div>
+    <div class="navbar-user-profile">
+      <div class="user-info">
+        <span class="user-name" id="nombreUsuarioNav">Usuario</span>
+        <span class="user-account" onclick="abrirModalCierreSesion()">Mi Cuenta</span>
+      </div>
+      <div class="user-avatar">M</div>
+    </div>
+  </nav>
+
+  <main class="menu-main" >
+    <div class="bg-orbes-calmos">
+  <div class="orbe orbe-1"></div>
+  <div class="orbe orbe-2"></div>
+  <div class="orbe orbe-3"></div>
+  <div class="orbe orbe-4"></div>
+
+  <svg class="hoja hoja-izq-1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,50 Q40,10 100,20 Q50,60 0,50 Z" fill="var(--verde-principal)" opacity="0.8"/>
+    <path d="M0,50 Q45,25 95,22" stroke="#ffffff" stroke-width="1.5" fill="none" opacity="0.6"/>
+  </svg>
+
+  <svg class="hoja hoja-izq-2" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,50 C30,0 70,10 100,50 C70,90 30,100 0,50 Z" fill="var(--verde-claro)" opacity="0.7"/>
+    <path d="M0,50 Q50,50 95,50 M25,50 L45,25 M45,50 L60,75 M65,50 L80,35" stroke="#ffffff" stroke-width="1.5" fill="none" opacity="0.5"/>
+  </svg>
+
+  <svg class="hoja hoja-izq-3" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,50 Q50,20 100,50 Q40,70 0,50 Z" fill="var(--verde-oscuro)" opacity="0.6"/>
+    <path d="M0,50 Q50,35 95,50" stroke="#ffffff" stroke-width="1" fill="none" opacity="0.5"/>
+  </svg>
+
+  <svg class="hoja hoja-der-1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <path d="M100,50 Q60,10 0,20 Q50,60 100,50 Z" fill="var(--verde-principal)" opacity="0.8"/>
+    <path d="M100,50 Q55,25 5,22" stroke="#ffffff" stroke-width="1.5" fill="none" opacity="0.6"/>
+  </svg>
+
+  <svg class="hoja hoja-der-2" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <path d="M100,50 C70,0 30,10 0,50 C30,90 70,100 100,50 Z" fill="var(--verde-claro)" opacity="0.7"/>
+    <path d="M100,50 Q50,50 5,50 M75,50 L55,25 M55,50 L40,75 M35,50 L20,35" stroke="#ffffff" stroke-width="1.5" fill="none" opacity="0.5"/>
+  </svg>
+
+  <svg class="hoja hoja-der-3" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <path d="M100,50 Q50,20 0,50 Q60,70 100,50 Z" fill="var(--verde-oscuro)" opacity="0.6"/>
+    <path d="M100,50 Q50,35 5,50" stroke="#ffffff" stroke-width="1" fill="none" opacity="0.5"/>
+  </svg>
+
+
+
+  <svg class="hoja hoja-izq-11" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <path d="M10,90 C30,50 60,30 90,10 C65,45 45,65 10,90 Z" fill="var(--verde-principal)" />
+  </svg>
+  
+  <svg class="hoja hoja-izq-22" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <path d="M10,90 Q40,40 90,10 Q30,60 10,90 Z" fill="var(--verde-claro)" />
+  </svg>
+
+
+
+  <svg class="hoja hoja-izq-44" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <path d="M10,90 C30,50 60,30 90,10 C65,45 45,65 10,90 Z" fill="var(--verde-principal)" />
+  </svg>
+
+  <svg class="hoja hoja-der-11" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <path d="M90,90 C70,50 40,30 10,10 C35,45 55,65 90,90 Z" fill="var(--verde-principal)" />
+  </svg>
+  
+  <svg class="hoja hoja-der-22" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <path d="M90,90 Q60,40 10,10 Q70,60 90,90 Z" fill="var(--verde-claro)" />
+  </svg>
+
+
+
+  <svg class="hoja hoja-der-44" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <path d="M90,90 C70,50 40,30 10,10 C35,45 55,65 90,90 Z" fill="var(--verde-claro)" />
+    <path d="M90,90 Q50,50 10,10" stroke="rgba(255,255,255,0.5)" stroke-width="2" fill="none" />
+  </svg>
+</div>
+    <div style="margin-bottom: 30px;">
+      <h1 style="font-size: 1.8rem; color: #18181b;">Panel Admin — Cargar Noche</h1>
+      <p style="color: #71717a;">Completá los datos y enviá. Una vez cargada, aparece en la grilla del festival.</p>
+    </div>
+
+    <!-- Formulario de carga -->
+    <section style="background: white; border-radius: 16px; padding: 30px; margin-bottom: 30px; border: 1px solid #e4e4e7;">
+      <div class="campo-grupo">
+        <label for="nocheTitulo">Título</label>
+        <div class="campo-input-wrapper">
+          <input type="text" id="nocheTitulo" class="campo-input" placeholder="Ej: Noche 6: Reencuentro" />
+        </div>
+      </div>
+
+      <div class="campo-grupo">
+        <label for="nocheFecha">Fecha</label>
+        <div class="campo-input-wrapper">
+          <input type="date" id="nocheFecha" class="campo-input" />
+        </div>
+      </div>
+
+      <div class="campo-grupo">
+        <label for="nocheHorario">Horario</label>
+        <div class="campo-input-wrapper">
+          <input type="text" id="nocheHorario" class="campo-input" placeholder="Ej: Inicio: 20:00 hs - Sin horario de fin" />
+        </div>
+      </div>
+
+      <div class="campo-grupo">
+        <label for="nocheArtistas">Artistas confirmados</label>
+        <div class="campo-input-wrapper">
+          <input type="text" id="nocheArtistas" class="campo-input" placeholder="Ej: Los Nocheros • Soledad Pastorutti" />
+        </div>
+      </div>
+
+      <div class="campo-grupo">
+        <label for="nochePrecioBase">Precio base (Sector C, mayores)</label>
+        <div class="campo-input-wrapper">
+          <input type="number" id="nochePrecioBase" class="campo-input" placeholder="Ej: 12000" min="0" step="100" />
+        </div>
+      </div>
+
+      <div class="campo-grupo" style="display:flex; align-items:center; gap:10px;">
+        <input type="checkbox" id="nocheDescuentoAnticipada" style="width:18px; height:18px;" />
+        <label for="nocheDescuentoAnticipada" style="margin:0;">Tiene descuento por compra anticipada (10%)</label>
+      </div>
+
+      <div id="alertaAdmin" class="alerta-error" style="display:none; margin-top: 10px;"></div>
+
+      <button class="btn-principal" style="margin-top: 10px;" onclick="manejarCargaNoche()">
+        Cargar Noche
+      </button>
+    </section>
+
+    <!-- Listado de noches ya cargadas -->
+    <section>
+      <h2 style="font-size: 1.2rem; margin-bottom: 16px; color: #18181b;">Noches ya cargadas</h2>
+      <div id="listaNoches"></div>
+    </section>
+
+  </main>
+
+  <!-- ═══ MODAL CIERRE DE SESIÓN ═══ -->
+  <div class="modal-overlay" id="modalCierreSesion" style="display: none;">
+    <div class="modal-caja">
+      <div class="modal-icono">👋</div>
+      <h2 class="modal-titulo">¿Cerrar sesión?</h2>
+      <p class="modal-desc">Vas a salir del sistema. Podrás volver a ingresar en cualquier momento.</p>
+      <div class="modal-botones">
+        <button class="btn-modal-cancelar" onclick="cerrarModal()">Cancelar</button>
+        <button class="btn-modal-confirmar" onclick="confirmarCierreSesion()">Salir</button>
+      </div>
+    </div>
+  </div>
+    <footer class="pie-pagina">
+    <div class="footer-contenido">
+      <p>&copy; 2026 Sistema Raíces Tickets. Todos los derechos reservados.</p>
+      <div class="footer-enlaces">
+        <a href="#">Términos y Condiciones</a>
+        <a href="#">Soporte Técnico</a>
+      </div>
+      <p style="font-size: 0.8rem; margin-top: 5px; opacity: 0.6;">
+        Desarrollado para la gestión segura de eventos.
+      </p>
+    </div>
+  </footer>
+  <script src="../../assets/javascript/admin.js?v=1.0"></script>
+  <script src="../../assets/javascript/menu.js?v=1.3"></script>
+  <script src="../../assets/javascript/autenticacion.js?v=1.1"></script>
+</body>
+</html>

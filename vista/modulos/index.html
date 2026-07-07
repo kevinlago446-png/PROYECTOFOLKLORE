@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Iniciar Sesión — Raíces Tickets</title>
+  <link rel="stylesheet" href="../../assets/css/estilos.css" />
+  <link rel="icon" type="image/png" href="../../files/img/favicon.png" />
+</head>
+
+<body>
+
+  <div class="auth-wrapper">
+
+    <!-- ═══ PANEL IZQUIERDO ═══ -->
+    <div class="auth-panel-izquierdo">
+      <div class="logo-icono">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Silueta guitarra folklórica estilizada -->
+          <ellipse cx="18" cy="24" rx="8" ry="9" fill="white" fill-opacity="0.95"/>
+          <ellipse cx="18" cy="24" rx="4.5" ry="5" fill="#16a34a"/>
+          <rect x="16.5" y="6" width="3" height="13" rx="1.5" fill="white" fill-opacity="0.95"/>
+          <ellipse cx="18" cy="11" rx="5" ry="4" fill="white" fill-opacity="0.85"/>
+          <circle cx="18" cy="24" r="1.5" fill="white"/>
+          <!-- clavija -->
+          <rect x="20.5" y="5" width="2" height="3" rx="1" fill="white" fill-opacity="0.7"/>
+          <rect x="13.5" y="5" width="2" height="3" rx="1" fill="white" fill-opacity="0.7"/>
+        </svg>
+      </div>
+      <p class="logo-titulo">RAÍCES</p>
+      <p class="logo-subtitulo">TICKETS</p>
+      <p class="logo-descripcion">
+        Tu portal oficial para el Festival de Folklore 2026.
+        Gestioná tus entradas para el único evento del año.
+      </p>
+      <span class="badge-oficial">✔ Punto de venta oficial</span>
+    </div>
+
+    <!-- ═══ PANEL DERECHO — FORMULARIO ═══ -->
+    <div class="auth-panel-derecho">
+      <div class="auth-formulario-contenedor">
+
+        <h1 class="auth-titulo">Iniciar Sesión</h1>
+        <p class="auth-subtitulo">Ingresá a tu cuenta para comprar y ver tus entradas.</p>
+
+        <!-- Alerta de error global -->
+        <div class="alerta-error" id="alertaLogin">
+          Credenciales incorrectas. Revisá tu correo y contraseña.
+        </div>
+
+        <!-- Formulario -->
+        <div id="formLogin">
+
+          <div class="campo-grupo">
+            <label for="emailLogin">Correo Electrónico</label>
+            <div class="campo-input-wrapper">
+              <span class="icono-campo">✉</span>
+              <input
+                type="email"
+                id="emailLogin"
+                class="campo-input"
+                placeholder="martina@ejemplo.com"
+                autocomplete="email"
+              />
+            </div>
+            <span class="campo-error-msg" id="errorEmailLogin">Ingresá un correo válido.</span>
+          </div>
+
+          <div class="campo-grupo">
+            <label for="passwordLogin">Contraseña</label>
+            <div class="campo-input-wrapper">
+              <span class="icono-campo">🔒</span>
+              <input
+                type="password"
+                id="passwordLogin"
+                class="campo-input"
+                placeholder="••••••••"
+                autocomplete="current-password"
+              />
+            </div>
+            <span class="campo-error-msg" id="errorPasswordLogin">La contraseña no puede estar vacía.</span>
+          </div>
+
+          <button class="btn-principal" id="btnIngresar" onclick="manejarLogin()">
+            Ingresar
+          </button>
+
+          <div class="auth-enlace-inferior">
+            ¿No tenés cuenta? <a href="registro.html">Registrate aquí</a>
+          </div>
+
+        </div>
+        <!-- /formLogin -->
+
+        <!-- Paso 2: Verificación en dos pasos por correo (oculto hasta que haga falta) -->
+        <div id="formVerificacion2FA" style="display:none;">
+          <p class="auth-subtitulo">Te enviamos un código de 6 dígitos a tu correo. Ingresalo para terminar de entrar.</p>
+
+          <div class="campo-grupo">
+            <label for="codigo2FA">Código de verificación</label>
+            <div class="campo-input-wrapper">
+              <span class="icono-campo">🔑</span>
+              <input
+                type="text"
+                id="codigo2FA"
+                class="campo-input"
+                placeholder="123456"
+                maxlength="6"
+                autocomplete="one-time-code"
+              />
+            </div>
+            <span class="campo-error-msg" id="errorCodigo2FA">Ingresá el código de 6 dígitos.</span>
+          </div>
+
+          <button class="btn-principal" id="btnVerificarCodigo" onclick="manejarVerificacion2FA()">
+            Verificar y entrar
+          </button>
+        </div>
+        <!-- /formVerificacion2FA -->
+
+      </div>
+    </div>
+    <!-- /panel derecho -->
+
+  </div>
+
+  <script src="../../assets/javascript/autenticacion.js?v=1.2"></script>
+</body>
+</html>

@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Crear Cuenta — Raíces Tickets</title>
+  <link rel="stylesheet" href="../../assets/css/estilos.css" />
+  <link rel="icon" type="image/png" href="../../files/img/favicon.png" />
+</head>
+
+<body>
+
+  <div class="auth-wrapper">
+
+    <!-- ═══ PANEL IZQUIERDO ═══ -->
+    <div class="auth-panel-izquierdo">
+      <div class="logo-icono">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="18" cy="24" rx="8" ry="9" fill="white" fill-opacity="0.95"/>
+          <ellipse cx="18" cy="24" rx="4.5" ry="5" fill="#16a34a"/>
+          <rect x="16.5" y="6" width="3" height="13" rx="1.5" fill="white" fill-opacity="0.95"/>
+          <ellipse cx="18" cy="11" rx="5" ry="4" fill="white" fill-opacity="0.85"/>
+          <circle cx="18" cy="24" r="1.5" fill="white"/>
+          <rect x="20.5" y="5" width="2" height="3" rx="1" fill="white" fill-opacity="0.7"/>
+          <rect x="13.5" y="5" width="2" height="3" rx="1" fill="white" fill-opacity="0.7"/>
+        </svg>
+      </div>
+      <p class="logo-titulo">RAÍCES</p>
+      <p class="logo-subtitulo">TICKETS</p>
+      <p class="logo-descripcion">
+        Tu portal oficial para el Festival de Folklore 2026.
+        Gestioná tus entradas para el único evento del año.
+      </p>
+      <span class="badge-oficial">✔ Punto de venta oficial</span>
+    </div>
+
+    <!-- ═══ PANEL DERECHO — FORMULARIO ═══ -->
+    <div class="auth-panel-derecho">
+      <div class="auth-formulario-contenedor">
+
+        <h1 class="auth-titulo">Crear Cuenta</h1>
+        <p class="auth-subtitulo">Completá tus datos para empezar a operar.</p>
+
+        <!-- Alerta global -->
+        <div class="alerta-error" id="alertaRegistro"></div>
+
+        <div id="formRegistro">
+
+          <!-- Nombre completo -->
+          <div class="campo-grupo">
+            <label for="nombreCompleto">Nombre Completo</label>
+            <div class="campo-input-wrapper">
+              <input
+                type="text"
+                id="nombreCompleto"
+                class="campo-input sin-icono"
+                placeholder="Ej: Martina García"
+                autocomplete="name"
+              />
+            </div>
+            <span class="campo-error-msg" id="errorNombre">Ingresá tu nombre completo.</span>
+          </div>
+
+          <!-- DNI y Teléfono -->
+          <div class="campos-fila">
+            <div class="campo-grupo">
+              <label for="dniRegistro">DNI</label>
+              <div class="campo-input-wrapper">
+                <input
+                  type="text"
+                  id="dniRegistro"
+                  class="campo-input sin-icono"
+                  placeholder="Ej: 41234567"
+                  maxlength="8"
+                />
+              </div>
+              <span class="campo-error-msg" id="errorDni">DNI inválido (7-8 dígitos).</span>
+            </div>
+
+            <div class="campo-grupo">
+              <label for="telefonoRegistro">Teléfono</label>
+              <div class="campo-input-wrapper">
+                <input
+                  type="tel"
+                  id="telefonoRegistro"
+                  class="campo-input sin-icono"
+                  placeholder="Ej: 2664123456"
+                />
+              </div>
+              <span class="campo-error-msg" id="errorTelefono">Teléfono inválido.</span>
+            </div>
+          </div>
+
+          <!-- Correo electrónico -->
+          <div class="campo-grupo">
+            <label for="emailRegistro">Correo Electrónico</label>
+            <div class="campo-input-wrapper">
+              <span class="icono-campo">✉</span>
+              <input
+                type="email"
+                id="emailRegistro"
+                class="campo-input"
+                placeholder="tu@correo.com"
+                autocomplete="email"
+              />
+            </div>
+            <span class="campo-error-msg" id="errorEmailReg">Ingresá un correo válido.</span>
+          </div>
+
+          <!-- Contraseña -->
+          <div class="campo-grupo">
+            <label for="passwordRegistro">Contraseña</label>
+            <div class="campo-input-wrapper">
+              <span class="icono-campo">🔒</span>
+              <input
+                type="password"
+                id="passwordRegistro"
+                class="campo-input"
+                placeholder="Mínimo 8 caracteres"
+                autocomplete="new-password"
+              />
+            </div>
+            <span class="campo-error-msg" id="errorPassword">Mínimo 8 caracteres.</span>
+          </div>
+
+          <!-- Términos y condiciones -->
+          <label class="terminos-grupo">
+            <input type="checkbox" id="checkTerminos" onchange="toggleBotonRegistro()" />
+            <span class="terminos-texto">
+              He leído y acepto los
+              <a href="#" class="terminos-enlace" onclick="abrirTerminos(event)">Términos y Condiciones</a>
+              del Festival.
+            </span>
+          </label>
+
+          <button
+            class="btn-principal"
+            id="btnRegistrarse"
+            disabled
+            onclick="manejarRegistro()"
+          >
+            Registrarse
+          </button>
+
+          <div class="auth-enlace-inferior">
+            ¿Ya tenés cuenta? <a href="index.html">Iniciá sesión</a>
+          </div>
+
+        </div>
+        <!-- /formRegistro -->
+
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ═══ MODAL TÉRMINOS Y CONDICIONES ═══ -->
+  <div class="modal-tyc-overlay" id="modalTerminos">
+    <div class="modal-tyc-caja">
+
+      <!-- Header -->
+      <div class="modal-tyc-header">
+        <div class="modal-tyc-header-texto">
+          <div class="modal-tyc-tag">📜 Documento legal</div>
+          <h2 class="modal-tyc-titulo">Términos y Condiciones</h2>
+          <p class="modal-tyc-fecha">Festival de Folklore 2026 · Vigente desde el 1 de enero de 2026</p>
+        </div>
+        <button class="btn-cerrar-modal" onclick="cerrarTerminos()" title="Cerrar">✕</button>
+      </div>
+
+      <!-- Cuerpo scrolleable -->
+      <div class="modal-tyc-body" id="tyc-body">
+
+        <!-- Índice -->
+        <div class="tyc-indice">
+          <p class="tyc-indice-titulo">Contenido</p>
+          <ol>
+            <li><a href="#tyc-1">1. Aceptación de los términos</a></li>
+            <li><a href="#tyc-2">2. Registro y cuenta de usuario</a></li>
+            <li><a href="#tyc-3">3. Compra y validez de entradas</a></li>
+            <li><a href="#tyc-4">4. Precios, descuentos y facturación</a></li>
+            <li><a href="#tyc-5">5. Política de devoluciones y cancelaciones</a></li>
+            <li><a href="#tyc-6">6. Normas de conducta en el evento</a></li>
+            <li><a href="#tyc-7">7. Protección de datos personales</a></li>
+            <li><a href="#tyc-8">8. Responsabilidad del sistema</a></li>
+            <li><a href="#tyc-9">9. Propiedad intelectual</a></li>
+            <li><a href="#tyc-10">10. Modificaciones y vigencia</a></li>
+          </ol>
+        </div>
+
+        <!-- Sección 1 -->
+        <div class="tyc-seccion" id="tyc-1">
+          <span class="tyc-seccion-numero">01</span>
+          <h3>Aceptación de los Términos</h3>
+          <p>
+            Al registrarse y utilizar el sistema Raíces Tickets, el usuario declara haber leído,
+            comprendido y aceptado en su totalidad los presentes Términos y Condiciones.
+            Si el usuario no estuviera de acuerdo con alguna de las disposiciones aquí
+            establecidas, deberá abstenerse de utilizar el sistema.
+          </p>
+          <p style="margin-top: 10px;">
+            La aceptación de estos términos es requisito indispensable para la creación de una
+            cuenta, la compra de entradas y el acceso a cualquier funcionalidad del portal.
+          </p>
+        </div>
+
+        <!-- Sección 2 -->
+        <div class="tyc-seccion" id="tyc-2">
+          <span class="tyc-seccion-numero">02</span>
+          <h3>Registro y Cuenta de Usuario</h3>
+          <p>Para utilizar el sistema, el usuario debe registrarse proporcionando:</p>
+          <ul>
+            <li>Nombre completo real (no se admiten seudónimos).</li>
+            <li>Documento Nacional de Identidad (DNI) válido y vigente.</li>
+            <li>Número de teléfono de contacto activo.</li>
+            <li>Dirección de correo electrónico válida y de uso personal.</li>
+            <li>Contraseña de al menos 8 caracteres.</li>
+          </ul>
+          <p style="margin-top: 10px;">
+            El usuario es responsable de mantener la confidencialidad de sus credenciales.
+            Cualquier actividad realizada desde su cuenta es de su exclusiva responsabilidad.
+            En caso de acceso no autorizado, debe notificarlo de inmediato al equipo de soporte.
+          </p>
+        </div>
+
+        <!-- Sección 3 -->
+        <div class="tyc-seccion" id="tyc-3">
+          <span class="tyc-seccion-numero">03</span>
+          <h3>Compra y Validez de Entradas</h3>
+          <p>
+            Cada entrada adquirida a través del sistema es personal e intransferible.
+            La entrada incluye un código de barras único generado al momento de la compra,
+            cuya verificación se realizará en el control de acceso al estadio.
+          </p>
+          <ul>
+            <li>Las entradas son válidas únicamente para la noche y sector indicados.</li>
+            <li>Está terminantemente prohibida la reproducción o falsificación de entradas.</li>
+            <li>La presentación de una entrada falsificada implica la denegación del acceso y posibles acciones legales.</li>
+            <li>El sistema garantiza la unicidad de cada butaca; no se admiten reservas duplicadas.</li>
+            <li>La generación del ticket no puede superar los 6 segundos desde la confirmación del pago.</li>
+          </ul>
+        </div>
+
+        <!-- Sección 4 -->
+        <div class="tyc-seccion" id="tyc-4">
+          <span class="tyc-seccion-numero">04</span>
+          <h3>Precios, Descuentos y Facturación</h3>
+          <p>
+            Los precios de las entradas varían según el sector (campo, platea, palco) y el
+            tipo de cliente (general, jubilado, estudiante, personas con discapacidad).
+            El sistema calcula automáticamente el precio correspondiente al seleccionar la
+            butaca y el perfil del comprador.
+          </p>
+          <ul>
+            <li>Los descuentos se aplican únicamente con la documentación acreditante vigente.</li>
+            <li>El pago se realiza exclusivamente en efectivo en los puntos de venta habilitados.</li>
+            <li>La entrada generada cumple función de factura y comprobante de pago válido.</li>
+            <li>Los precios publicados incluyen todos los cargos e impuestos aplicables.</li>
+          </ul>
+        </div>
+
+        <!-- Sección 5 -->
+        <div class="tyc-seccion" id="tyc-5">
+          <span class="tyc-seccion-numero">05</span>
+          <h3>Política de Devoluciones y Cancelaciones</h3>
+          <p>
+            Las entradas adquiridas no tienen devolución salvo en los siguientes casos excepcionales:
+          </p>
+          <ul>
+            <li>Cancelación oficial del evento por parte de la organización del Festival.</li>
+            <li>Cambio de fecha de la noche para la cual fue adquirida la entrada.</li>
+            <li>Error comprobable imputable al sistema de venta (duplicación técnica, precio incorrecto).</li>
+          </ul>
+          <p style="margin-top: 10px;">
+            En caso de cancelación del evento, el reintegro se realizará en el mismo punto de
+            venta donde se efectuó la compra, dentro de los 30 días corridos desde el anuncio oficial.
+            No se aceptan solicitudes de devolución por razones personales del comprador.
+          </p>
+        </div>
+
+        <!-- Sección 6 -->
+        <div class="tyc-seccion" id="tyc-6">
+          <span class="tyc-seccion-numero">06</span>
+          <h3>Normas de Conducta en el Evento</h3>
+          <p>
+            Al adquirir una entrada, el usuario se compromete a respetar las normas de convivencia
+            establecidas por la organización del Festival de Folklore 2026:
+          </p>
+          <ul>
+            <li>Presentar la entrada original (digital o impresa) junto al DNI en el acceso.</li>
+            <li>Respetar el sector y butaca asignados en la entrada.</li>
+            <li>No ingresar con objetos prohibidos según el reglamento del estadio.</li>
+            <li>Acatar las indicaciones del personal de seguridad en todo momento.</li>
+            <li>No revender entradas por medios no autorizados.</li>
+          </ul>
+          <p style="margin-top: 10px;">
+            El incumplimiento de estas normas podrá resultar en la expulsión del recinto sin
+            derecho a reintegro y en la inhabilitación de la cuenta de usuario.
+          </p>
+        </div>
+
+        <!-- Sección 7 -->
+        <div class="tyc-seccion" id="tyc-7">
+          <span class="tyc-seccion-numero">07</span>
+          <h3>Protección de Datos Personales</h3>
+          <p>
+            Los datos personales recopilados durante el registro (nombre, DNI, teléfono, correo)
+            serán utilizados exclusivamente para la gestión de cuentas y entradas del Festival.
+            KPT Systems se compromete a:
+          </p>
+          <ul>
+            <li>No ceder ni vender datos personales a terceros.</li>
+            <li>Almacenar la información en servidores seguros con cifrado de datos.</li>
+            <li>Permitir al usuario solicitar la eliminación de su cuenta y datos asociados.</li>
+            <li>Cumplir con la Ley N.º 25.326 de Protección de Datos Personales de la República Argentina.</li>
+          </ul>
+        </div>
+
+        <!-- Sección 8 -->
+        <div class="tyc-seccion" id="tyc-8">
+          <span class="tyc-seccion-numero">08</span>
+          <h3>Responsabilidad del Sistema</h3>
+          <p>
+            Raíces Tickets no se responsabiliza por:
+          </p>
+          <ul>
+            <li>Interrupciones del servicio causadas por fuerza mayor o fallos de conectividad externos.</li>
+            <li>Pérdida de acceso a la cuenta por olvido de credenciales.</li>
+            <li>Daños producidos por el uso indebido del sistema por parte del usuario.</li>
+            <li>Cambios en la programación artística del Festival decididos por la organización.</li>
+          </ul>
+          <p style="margin-top: 10px;">
+            El sistema funciona con cinco puntos de venta simultáneos. Ante cualquier discrepancia
+            técnica, prevalecerá el registro de la base de datos central.
+          </p>
+        </div>
+
+        <!-- Sección 9 -->
+        <div class="tyc-seccion" id="tyc-9">
+          <span class="tyc-seccion-numero">09</span>
+          <h3>Propiedad Intelectual</h3>
+          <p>
+            El diseño, código, logotipos, textos y demás elementos del sistema Raíces Tickets
+            son propiedad de KPT Systems. Queda expresamente prohibida su reproducción,
+            distribución o modificación sin autorización escrita del equipo desarrollador.
+          </p>
+          <p style="margin-top: 10px;">
+            El nombre "Festival de Folklore", su marca e imagen son propiedad de la organización
+            del evento. Su uso en este sistema se realiza bajo acuerdo de licencia oficial.
+          </p>
+        </div>
+
+        <!-- Sección 10 -->
+        <div class="tyc-seccion" id="tyc-10">
+          <span class="tyc-seccion-numero">10</span>
+          <h3>Modificaciones y Vigencia</h3>
+          <p>
+            KPT Systems se reserva el derecho de modificar estos Términos y Condiciones en
+            cualquier momento. Los cambios serán comunicados a los usuarios registrados por
+            correo electrónico con al menos 7 días de anticipación.
+          </p>
+          <p style="margin-top: 10px;">
+            El uso continuado del sistema luego de la notificación implica la aceptación de los
+            nuevos términos. Estos Términos y Condiciones se rigen por las leyes de la
+            República Argentina. Ante cualquier controversia, las partes se someten a la
+            jurisdicción de los tribunales ordinarios de la provincia de San Luis.
+          </p>
+          <p style="margin-top: 10px; font-size: 0.83rem; color: var(--texto-claro);">
+            <strong>KPT Systems</strong> — "Building smart Solutions"<br/>
+            Contacto: soporte@raicestickets.com.ar
+          </p>
+        </div>
+
+      </div>
+      <!-- /tyc-body -->
+
+      <!-- Footer -->
+      <div class="modal-tyc-footer">
+        <p class="tyc-footer-texto">Al hacer clic en "Aceptar" confirmás haber leído y comprendido estos términos.</p>
+        <button class="btn-aceptar-tyc" onclick="aceptarTerminos()">
+          ✔ Aceptar y cerrar
+        </button>
+      </div>
+
+    </div>
+  </div>
+  <!-- /modal términos -->
+
+  <script src="../../assets/javascript/autenticacion.js?v=1.1"></script>
+  <script>
+    function abrirTerminos(e) {
+      e.preventDefault();
+      document.getElementById('modalTerminos').classList.add('visible');
+      // Scroll al inicio del contenido cada vez que se abre
+      document.getElementById('tyc-body').scrollTop = 0;
+    }
+
+    function cerrarTerminos() {
+      document.getElementById('modalTerminos').classList.remove('visible');
+    }
+
+    function aceptarTerminos() {
+      // Marcar el checkbox automáticamente al aceptar
+      const check = document.getElementById('checkTerminos');
+      if (check) {
+        check.checked = true;
+        toggleBotonRegistro();
+      }
+      cerrarTerminos();
+    } 
+    function toggleBotonRegistro() {
+      const check = document.getElementById('checkTerminos');
+      // Buscamos el botón que tiene la acción de registrarse
+      const botonRegistro = document.querySelector('button[onclick="manejarRegistro()"]');
+  
+      if (check && botonRegistro) {
+        // Si el checkbox NO está marcado, el botón se deshabilita (disabled = true)
+        botonRegistro.disabled = !check.checked;
+      }
+    }
+
+    // Cerrar al hacer click fuera del modal
+    document.getElementById('modalTerminos').addEventListener('click', function(e) {
+      if (e.target === this) cerrarTerminos();
+    });
+  </script>
+</body>
+</html>
